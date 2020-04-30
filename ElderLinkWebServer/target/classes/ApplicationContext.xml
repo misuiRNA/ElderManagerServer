@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+    
+    <!-- Initialization for data source -->
+    <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+        <property name="url" value="jdbc:sqlserver://localhost:1433; DatabaseName=ElderLinkServer" />
+        <property name="username" value="rna" />
+        <property name="password" value="215039" />
+    </bean>
+
+   <!-- Initialization for TransactionManager -->
+   <bean id="transactionManager" 
+      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource"  ref="dataSource" />    
+   </bean>
+
+    <!-- Definition for elderJDBC bean -->
+    <bean id="elderJDBCTemplate" class="linkserver.data.handler.ElderJDBC">
+        <property name="dataSource" ref="dataSource" />
+        <property name="transactionManager" ref="transactionManager" />
+    </bean>
+    
+    <!-- Definition for LogUserJDBC bean -->
+    <bean id="logUserJDBCTemplate" class="linkserver.data.handler.LogUserJDBC">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <!-- Definition for RingDataJDBC bean -->
+    <bean id="RingDataJDBCTemplate" class="linkserver.data.handler.RingDataJDBC">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+</beans>
