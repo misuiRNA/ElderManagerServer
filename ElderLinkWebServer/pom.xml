@@ -29,7 +29,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
   <properties>
        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-       <springframework.version>4.3.1.RELEASE</springframework.version>
+       <springframework.version>5.2.7.RELEASE</springframework.version>
        <springsecurity.version>4.1.4.RELEASE</springsecurity.version>
        <jackson.library>2.7.5</jackson.library>
    </properties>
